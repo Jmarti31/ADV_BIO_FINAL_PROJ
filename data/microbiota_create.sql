@@ -1,0 +1,51 @@
+##PART 1 CREATE A TABLE OF KNOWN MICROBIOTA ABUNDANCES in the psql command line
+
+DROP TABLE IF EXISTS premicrobiota;
+CREATE TABLE premicrobiota
+(
+  Phenotype  VARCHAR(15) NOT NULL,
+  taxonomic_rank VARCHAR(10) NOT NULL,
+  NCBI_taxon_ID INTEGER NOT NULL,
+  Organism_Name VARCHAR(100) NOT NULL,
+  USELES VARCHAR(50),
+  TRYSS VARCHAR(30),
+  BUDBDD VARCHAR(25),
+  WOOEN VARCHAR(25),
+  WessEN VARCHAR(25),
+  phenotype_term VARCHAR(100),
+  description TEXT
+);
+
+##PART 2 ADD IN THE GMREPO TEXT FILE
+
+##PART 3 DROP ALL UNECCESARY COLUMNS, THEN CREATE A NEW TABLE WITH ONLY DISTINCT ROWS
+
+ALTER TABLE premicrobiota
+  DROP COLUMN Phenotype;
+ALTER TABLE premicrobiota
+  DROP COLUMN taxonomic_rank;
+ALTER TABLE premicrobiota
+  DROP COLUMN USELES;
+ALTER TABLE premicrobiota
+  DROP COLUMN TRYSS;
+ALTER TABLE premicrobiota
+  DROP COLUMN BUDBDD;
+ALTER TABLE premicrobiota
+  DROP COLUMN WOOEN;
+ALTER TABLE premicrobiota
+  DROP COLUMN WessEN;
+ALTER TABLE premicrobiota
+  DROP COLUMN phenotype_term;
+ALTER TABLE premicrobiota
+  DROP COLUMN description;
+
+DROP TABLE IF EXISTS mircobiota;
+CREATE TABLE microbiota
+  AS (SELECT DISTINCT * 
+      FROM premicrobiota);
+
+ALTER TABLE microbiota
+	ADD COLUMN entry_id SERIAL PRIMARY KEY;
+
+
+DROP TABLE IF EXISTS premicrobiota;

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Search miR.Gut{% endblock %}
+
+{% block page_content %}
+<head>
+  <link rel="stylesheet" href="static/style.css">
+  <script src="https://code.jquery.com/jquery-2.1.3.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/2.3.15/cytoscape.js"></script>
+  <style>
+      body{
+          background-color: rgba(33, 124, 45, 0.166);
+      }
+      h1{
+          font-weight: bold;
+      }
+      div.box{
+        background-color: rgba(33, 124, 45, 0.149);
+        padding-top: 1px;
+        padding-bottom: 2px;
+        padding-left: 15px;
+        margin: auto;
+      }
+  </style>
+</head>  
+<body>
+    <h1> miR.Gut Database Search</h1>
+    <p>__________________________________________________________________________________</p>
+    <div class = box>
+      <h3>How does it work?</h3>
+      <p>
+        The following browsing feature of the database retrieves miRNA/Microbiota interactions associated<br>
+        with a given query. The MicroRNA option uses exact miRBase ID's for search queries, while the<br> 
+        Microbiota option uses primarily exact NCBI Organism Name's and has limited functionality <br>
+        to use NCBI Taxonomy ID's also as an option. The server is designed to reset the page if there <br>
+        doesn't appear to be any associated data to a given query.
+      </p>
+    </div>
+    <p>__________________________________________________________________________________</p>
+    <br>
+</body>
+
+{{ wtf.quick_form(form) }}
+{% endblock %}
+

@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS microrna;
+CREATE TABLE microrna
+(
+  miRBase_ID  VARCHAR(20) NOT NULL PRIMARY KEY,
+  Sequence VARCHAR(200) NOT NULL
+);
+
+

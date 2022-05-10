@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}miR.Gut Database Search Results{% endblock %}
+{% block page_content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <style>
+    td {
+        font-family: "Lucida Console", "Courier New", monospace;
+    }
+    table{
+        background-color: rgba(127, 255, 212, 0.321);
+        
+    }
+    body{
+        background-color: rgba(33, 124, 45, 0.166);
+    }
+    h1{
+        font-weight: bold;
+    }
+    p{
+      text-decoration: underline;
+    }
+</style>
+
+</head>
+  <body>
+    <div class="page-header">
+        <h1> miR.Gut Interaction Search Results </h1>
+    </div>
+  <div class="container">
+    <p>
+      Query Parameters:
+      </p>
+      <p>
+      Name: {{name1}}
+      </p>
+      <p>
+      Search Type: {{name2}}
+      </p>
+      <p>
+      Row Filter: {{name3}}
+      </p>
+      <p>
+      Ordering By: {{name4}}
+      </p>
+
+
+  <br\><br\>
+  <h2>Known Interactions Based on Query:</h2>
+  <br\><br\>
+
+  <div class="table-responsive">
+    <table class="table table-dark table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>Interaction ID</th>
+          <th>miRBase ID</th>
+          <th>Directionality</th>
+          <th>Organism Name</th>
+          <th>Effects</th>
+          <th>Disease_Name</th>
+          <th>DOI_ID</th>
+          <th>PMID</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in presults %}
+            <tr>
+              <td>{{item.interaction_id}}</a></td>
+              <td><a href="{{'https://www.mirbase.org/cgi-bin/mirna_entry.pl?acc=' + item.mirbase_id}}">{{item.mirbase_id}}</a></td>
+              <td>{{item.directionality}}</td>
+              <td>{{item.organism_name}}</td>
+              <td>{{item.effects}}</td>
+              <td>{{item.disease_name}}</td>
+              <td><a href="{{'https://doi.org/' + item.doi_id}}">{{item.doi_id}}</a></td>
+              <td><a href="{{'https://pubmed.ncbi.nlm.nih.gov/' + 'item.pmid'}}">{{item.pmid}}</a></td>
+            </tr>
+          {% endfor %}
+    </tbody>
+    </table>
+  </div>
+
+  <br\><br\>
+  <h2>MicroRNA Entries Based on Query:</h2>
+  <br\><br\>
+
+  <div class="table-responsive">
+    <table class="table table-dark table-striped">
+      <thead class="thead-dark">
+        <tr> 
+          <th>miRBase ID</th>
+          <th>Sequence</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for entry in mirseq %}
+            <tr>
+              <td>{{entry.mirbase_id}}</td>
+              <td>{{entry.sequence}}</td>
+            </tr>
+          {% endfor %}
+    </tbody>
+    </table>
+  </div>
+
+  <br\><br\>
+  <h2>MicroRNA-Associated Diseases Based on Query:</h2>
+  <br\><br\>
+
+  <div class="table-responsive">
+    <table class="table table-dark table-striped">
+      <thead class="thead-dark">
+        <tr> 
+          <th>ID</th>
+          <th>miRBase ID</th>
+          <th>Disease Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for entry in mirdis %}
+            <tr>
+              <td>{{entry.id}}</td>
+              <td>{{entry.mirbase_id}}</td>
+              <td>{{entry.disease_name}}</td>
+            </tr>
+          {% endfor %}
+    </tbody>
+    </table>
+  </div>
+  </div>
+</body>
+
+{{ wtf.quick_form(form3) }}
+{% endblock %}
+</html>

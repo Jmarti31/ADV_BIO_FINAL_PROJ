@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+  
+{% block title %}Statistics for miR.Gut Database{% endblock %}
+
+{% block page_content %}
+
+<head>
+    <link rel="stylesheet" href="static/style.css">
+    <script src="https://code.jquery.com/jquery-2.1.3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/2.3.15/cytoscape.js"></script>
+    <style>
+        td {
+            font-family: "Lucida Console", "Courier New", monospace;
+        }
+        table{
+            background-color: rgba(127, 255, 212, 0.321);
+            
+        }
+        body{
+            background-color: rgba(33, 124, 45, 0.166);
+        }
+        h1{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-header">
+        <h1>  PostgreSQL Data Statistics</h1>
+        <br>
+        <table class="table table-dark table-striped">
+            <thead>
+            <tr>
+                <th>PostgreSQL Table</th>
+                <th>Amount</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Interactions</td>
+                    <td>{{s1}}</td>
+                </tr>
+                <tr>
+                    <td>MicroRNA Entries</td>
+                    <td>{{s2}}</td>
+                </tr>
+                <tr>
+                    <td>Microbiota Entries</td>
+                    <td>{{s3}}</td>
+                </tr>
+                <tr>
+                    <td>Disease-microRNA Relations</td>
+                    <td>{{s4}}</td>
+                </tr>
+                <tr>
+                    <td>Disease-Microbiota Relations</td>
+                    <td>{{s5}}</td>
+                </tr>
+                <tr>
+                    <td>Disease Entries</td>
+                    <td>{{s6}}</td>
+                </tr>
+        </tbody>
+        </table>
+    </div>
+</body>
+{% endblock %}
+~               

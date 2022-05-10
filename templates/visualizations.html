@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+  
+{% block title %}Visualizing Interactions{% endblock %}
+
+{% block page_content %}
+
+<head>
+    <link rel="stylesheet" href="static/style.css">
+    <script src="https://code.jquery.com/jquery-2.1.3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/2.3.15/cytoscape.js"></script>
+    <style>
+        .parent {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .child {
+            width: 60%;
+            font-size: 10px;
+            background-color: rgba(33, 124, 45, 0.058);
+        }
+        .parent1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .child1 {
+            width: 60%;
+            font-size: 10px;
+            background-color: rgba(33, 124, 45, 0.058);
+        }
+
+    </style>
+    <script type="text/javascript">
+		$(function() {
+			var cy = cytoscape({
+				container: document.getElementById('cy'),
+				style: [
+					{
+						selector: 'node',
+						css: {
+							width: 80,
+							height: 70,
+                            shape: 'hexagon',
+							'background-color':'#3AE37A',
+							content: 'data(id)',
+                            'border-color': 'green'
+						}
+					},
+                    {
+                        selector: 'edge',
+                        css: {
+                            width: 8,
+                            shape: 'hexagon',
+							'color':'#61bffc',
+                        }
+                    }
+				],
+				elements: {
+					nodes: [
+                        { data: { id: 'hsa-mir-155-1', href: 'https://www.mirbase.org/cgi-bin/mirna_entry.pl?acc=hsa-mir-155'} },
+                        { data: { id: 'hsa-mir-1226', href: 'https://www.mirbase.org/cgi-bin/mirna_entry.pl?acc=hsa-mir-1226'} },
+                        { data: { id: 'hsa-mir-139', href: 'https://www.mirbase.org/cgi-bin/mirna_entry.pl?acc=hsa-mir-139'} },
+                        { data: { id: 'hsa-let-7b', href: 'https://www.mirbase.org/cgi-bin/mirna_entry.pl?acc=hsa-let-7b'} },
+                        { data: { id: 'hsa-mir-146', href: 'https://www.mirbase.org/cgi-bin/mirna_entry.pl?acc=hsa-mir-146'} },
+                        { data: { id: 'hsa-mir-223', href: 'https://www.mirbase.org/cgi-bin/mirna_entry.pl?acc=hsa-mir-223'} },
+                        { data: { id: 'hsa-mir-150', href: 'https://www.mirbase.org/cgi-bin/mirna_entry.pl?acc=hsa-mir-150'} },
+                        { data: { id: 'hsa-mir-143', href: 'https://www.mirbase.org/cgi-bin/mirna_entry.pl?acc=hsa-mir-143'} },
+                        { data: { id: 'hsa-mir-375', href: 'https://www.mirbase.org/cgi-bin/mirna_entry.pl?acc=hsa-mir-375'} },
+                        { data: { id: 'hsa-mir-148a', href: 'https://www.mirbase.org/cgi-bin/mirna_entry.pl?acc=hsa-mir-148a'} },
+                        { data: { id: 'hsa-mir-200b', href: 'https://www.mirbase.org/cgi-bin/mirna_entry.pl?acc=hsa-mir-200b'} },
+                        { data: { id: 'hsa-mir-200c', href: 'https://www.mirbase.org/cgi-bin/mirna_entry.pl?acc=hsa-mir-200c'} },
+                        { data: { id: 'hsa-mir-21', href: 'https://www.mirbase.org/cgi-bin/mirna_entry.pl?acc=hsa-mir-21'} },
+                        { data: { id: 'hsa-mir-135b', href: 'https://www.mirbase.org/cgi-bin/mirna_entry.pl?acc=hsa-mir-135b'} },
+                        { data: { id: 'hsa-mir-155', href: 'https://www.mirbase.org/cgi-bin/mirna_entry.pl?acc=hsa-mir-155'} },
+                        { data: { id: 'hsa-mir-26b', href: 'https://www.mirbase.org/cgi-bin/mirna_entry.pl?acc=hsa-mir-26b'} },
+                        { data: { id: 'hsa-mir-18a', href: 'https://www.mirbase.org/cgi-bin/mirna_entry.pl?acc=hsa-mir-18a'} },
+                        { data: { id: 'hsa-mir-145', href: 'https://www.mirbase.org/cgi-bin/mirna_entry.pl?acc=hsa-mir-145'} },
+                        { data: { id: 'hsa-mir-15a', href: 'https://www.mirbase.org/cgi-bin/mirna_entry.pl?acc=hsa-mir-15a'} },
+                        { data: { id: 'hsa-mir-146a', href: 'https://www.mirbase.org/cgi-bin/mirna_entry.pl?acc=hsa-mir-146a'} },
+                        { data: { id: 'hsa-mir-199a', href: 'https://www.mirbase.org/cgi-bin/mirna_entry.pl?acc=hsa-mir-199a'} },
+                        { data: { id: 'hsa-mir-548ab', href: 'https://www.mirbase.org/cgi-bin/mirna_entry.pl?acc=hsa-mir-548ab'} },
+                        { data: { id: 'Fusobacterium nucleatum', href:'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=851'} },
+                        { data: { id: 'Escherichia coli', href:'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=562'} },
+                        { data: { id: 'Blautia', href:'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=572511'} },
+                        { data: { id: 'Escherichia coli O83:H1 str. NRG 857C', href:'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=685038'} },
+                        { data: { id: 'Herpes simplex virus-1', href:'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=946522'} },
+                        { data: { id: 'Escherichia coli Nissle 1917', href:'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=316435'} },
+                        { data: { id: 'Saccharomyces boulardii', href:'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=252598'} },
+                        { data: { id: 'Lactobacillus fermentum', href:'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=1613'} },
+                        { data: { id: 'Lactobacillus salivarius', href:'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=1624'} },
+                        { data: { id: 'Listeria monocytogenes', href:'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=1639'} },
+                        { data: { id: 'Lactobacillus acidophilus', href:'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=1579'} },
+                        { data: { id: 'Bifidobacterium bifidum', href:'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=1681'} },
+                        { data: { id: 'Bifidobacterium longum', href:'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=216816'} },
+                        { data: { id: 'uncultured segmented filamentous bacterium', href:'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=553310'} },
+				      
+				    ],
+				  edges: [
+                      { data: { id:'MIG000001', source: 'hsa-mir-155-1', target: 'Fusobacterium nucleatum' } },
+                      { data: { id:'MIG000002', source: 'hsa-mir-1226', target: 'Escherichia coli' } },
+                      { data: { id:'MIG000003', source: 'hsa-mir-139', target: 'Blautia' } },
+                      { data: { id:'MIG000004', source: 'Escherichia coli O83:H1 str. NRG 857C', target: 'hsa-let-7b' } },
+                      { data: { id:'MIG000005', source: 'Herpes simplex virus-1', target: 'hsa-mir-146' } },
+                      { data: { id:'MIG000006', source: 'Escherichia coli Nissle 1917', target: 'hsa-mir-223' } },
+                      { data: { id:'MIG000007', source: 'Escherichia coli Nissle 1917', target: 'hsa-mir-155' } },
+                      { data: { id:'MIG000008', source: 'Escherichia coli Nissle 1917', target: 'hsa-mir-150' } },
+                      { data: { id:'MIG000009', source: 'Escherichia coli Nissle 1917', target: 'hsa-mir-143' } },
+                      { data: { id:'MIG000010', source: 'Escherichia coli Nissle 1917', target: 'hsa-mir-375' } },
+                      { data: { id:'MIG000011', source: 'Saccharomyces boulardii', target: 'hsa-mir-223' } },
+                      { data: { id:'MIG000012', source: 'Saccharomyces boulardii', target: 'hsa-mir-155' } },
+                      { data: { id:'MIG000013', source: 'Lactobacillus fermentum', target: 'hsa-mir-150' } },
+                      { data: { id:'MIG000014', source: 'Lactobacillus fermentum', target: 'hsa-mir-155' } },
+                      { data: { id:'MIG000015', source: 'Lactobacillus fermentum', target: 'hsa-mir-223' } },
+                      { data: { id:'MIG000016', source: 'Lactobacillus fermentum', target: 'hsa-mir-143' } },
+                      { data: { id:'MIG000017', source: 'Lactobacillus salivarius', target: 'hsa-mir-155' } },
+                      { data: { id:'MIG000018', source: 'Lactobacillus salivarius', target: 'hsa-mir-223' } },
+                      { data: { id:'MIG000019', source: 'Listeria monocytogenes', target: 'hsa-mir-143' } },
+                      { data: { id:'MIG000020', source: 'Listeria monocytogenes', target: 'hsa-mir-148a' } },
+                      { data: { id:'MIG000021', source: 'Listeria monocytogenes', target: 'hsa-mir-200b' } },
+                      { data: { id:'MIG000022', source: 'Listeria monocytogenes', target: 'hsa-mir-200c' } },
+                      { data: { id:'MIG000023', source: 'Fusobacterium nucleatum', target: 'hsa-mir-21' } },
+                      { data: { id:'MIG000024', source: 'Lactobacillus acidophilus', target: 'hsa-mir-135b' } },
+                      { data: { id:'MIG000025', source: 'Lactobacillus acidophilus', target: 'hsa-mir-155' } },
+                      { data: { id:'MIG000026', source: 'Bifidobacterium bifidum', target: 'hsa-mir-26b' } },
+                      { data: { id:'MIG000027', source: 'Bifidobacterium bifidum', target: 'hsa-mir-18a' } },
+                      { data: { id:'MIG000028', source: 'Bifidobacterium longum', target: 'hsa-mir-145' } },
+                      { data: { id:'MIG000029', source: 'Bifidobacterium longum', target: 'hsa-mir-15a' } },
+                      { data: { id:'MIG000030', source: 'Bifidobacterium longum', target: 'hsa-mir-146a' } },
+                      { data: { id:'MIG000031', source: 'hsa-mir-199a', target: 'uncultured segmented filamentous bacterium' } },
+                      { data: { id:'MIG000032', source: 'hsa-mir-548ab', target: 'Fusobacterium nucleatum' } },
+                      { data: { id:'MIG000033', source: 'hsa-mir-548ab', target: 'Escherichia coli' } }
+				    ]
+				},
+				layout: {
+				    name: 'cose',
+				    directed: true,
+				    padding: 10,
+				   /* color: "#ffff00",*/
+				    fit: true
+				}
+			});
+
+            cy.on('tap', 'node', function(){
+                try { // your browser may block popups
+                    window.open( this.data('href') );
+                } catch(e){ // fall back on url change
+                    window.location.href = this.data('href');
+                }
+		    });
+    });
+		
+	</script>
+</head>
+
+<body>
+    <div class="parent">
+        <div class="child">
+            <h2>Currently Known Microbiota/MicroRNA Interactions</h2>
+            <p>
+                CytoScape.JS is used to generate visualizations of the databases interaction data.<br>
+                The dynamic display could be dragged, zoomed in, and clicked.<br>
+                Each node link out to the NCBI Taxonomy or miRBase databases for information expansion.
+            </p>
+            
+        </div>
+    </div>
+<div id="cy"></div>
+    
+</body>
+{% endblock %}        
+
+         

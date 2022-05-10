@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+  
+{% block title %}About miR.Gut Database{% endblock %}
+
+{% block page_content %}
+<head>
+    <script src="https://code.jquery.com/jquery-2.1.3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/2.3.15/cytoscape.js"></script>
+    <style>
+        body{
+            background-color: rgba(33, 124, 45, 0.166);
+        }
+        h1{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-header">
+        <h1> About miR.Gut: <br> The Human MicroRNA/Gut Microbiota Interaction Database</h1>
+        <p> The miR.Gut Database Project was conceived from the rapid expansion of
+            microbiome and miRNA studies in part due to the creation of new sequencing 
+            technologies and methodologies. Emerging evidence of host-microbe communication
+            through host-miRNA and microbial by-products has facilitated a desire 
+            for researchers to delve further into these interactions to discover potential
+            effects on host physiology, microbiome composition, and gene expression.
+            The project focuses on keeping track of experimental findings of miRNA/gut microbiota
+            interactions for standardization of interaction classification and cellular 
+            effects/disease annotation. </p>
+        <p> The interactions between miRNAs and gut microbiota have been mainly characterized by: </p>
+        <ul>
+            <li>(1) Gut microbiota products influencing miRNA gene expression in host cells </li>
+            <li>(2) Vesicle enclosed host miRNAs being taken up by microbes affecting microbe gene expression</li>
+            <li>(3) Foreign miRNA's entering the host and then taken up by the microbiome </li>
+        </ul>
+        <p> 
+            The current project looks mainly into Human MicroRNA and Human-associated Gut Microbiota Interactions,
+            so information pertaining to other species host is not yet supported.
+    </p>
+    </div>
+</body>
+{% endblock %}
+~                
