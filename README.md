@@ -1,47 +1,32 @@
-# pres_psql_flask_template
-## Flask app that sorts/selects/limits presidents from postgres database
-
-### Working Example of this application can be found at
-#### https://get-pres.herokuapp.com/
+# miR.Gut: THE MIRNA/MICROBIOTA INTERACTION DATABASE
 
 Installation notes:
 
 clone repo to a designated directory on your computer (i.e. in a terminal cd to where you want it)
 <p>
   download .zip file into your project directory
-  
-  
-The data directory contains raw president data and sql scripts to configure table and insert data
-<p>Files contained in data directory:<p>
-   1. insert_president.sql<p>      
-   2. president.txt<p>
-   3. psql_create_president.sql<p>
 
 ## cd to the data dir:
 Make sure the postgres.app is running on your machine
 ## In a terminal/shell window type
 'psql' to start the postgres.app
 
-## from psql prompt type
-CREATE DATABASE president;
 
-## Connect to the president database
-\c president
+## Connect to the miR.Gut database
+\c miR.Gut
 
-## To create the president table, enter
-\i psql_create_president.sql
-## To insert data row by row, enter
-\i insert_president.sql
-
-
-Remove all records from table
-DELETE from president;
+## To create the tables use, open up each sql file and follow steps specified,
+  usually need to copy and paste sql commands
+example## \i C:/Users/Oera/Documents/ACTUALProject/data/Taxonomy.sql
+ 
 ## populate table directly from text file
-\COPY president FROM 'president.txt' with DELIMITER E'\t';
-###E escapes the following character (ie tab delimited format)
-add Primary key to table for AlchemySQL<p>
+\COPY  FROM 'C:/Users/Oera/Downloads/NCBITaxonomylist.txt' with DELIMITER E'\t';
 
-ALTER TABLE president ADD COLUMN id SERIAL PRIMARY KEY;
+
+###Read through sql files to make sure steps are performed correctly to format data table perfectly
+  In some cases using pgadmin4 is necessary to fix a couple data issues. For example after the 
+  "Interactions" table is made, PGadmin4 is needed to edit disease names to change Crohn.s Disease
+  and Alzheimer's Disease into Crohn's Disease and Alzheimer's Disease.
 
 
 \q to quit
@@ -81,10 +66,3 @@ in terminal type
 http://127.0.0.1:5000/
 
 type control c in terminal window to quit
-
-# Working Example of this application can be found at
-
-https://get-pres.herokuapp.com/
-
-\i C:/Users/Oera/Documents/ACTUALProject/data/Interactions.sql
-\COPY  FROM 'C:/Users/Oera/Downloads/NCBITaxonomylist.txt' with DELIMITER E'\t';
